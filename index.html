@@ -1,4 +1,4 @@
-<!-- save as fullpage-task.html -->
+<!-- save as fullpage-ad-task.html -->
 <!doctype html>
 <html lang="ar">
 <head>
@@ -29,7 +29,7 @@
     display: block;
     width: 100%;
     max-width: 300px;
-    margin: 0 auto;
+    margin: 20px auto;
     background: #0b5ed7;
     color: #fff;
     border: none;
@@ -40,6 +40,10 @@
     transition: 0.2s;
   }
   button:hover { background: #094bb5; }
+  #adPlaceholder {
+    margin: 30px 0;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
@@ -48,16 +52,20 @@
   <h1>موقع مهامي</h1>
   <p>
     مرحبًا بك في موقع مهامي! يمكنك تنفيذ المهام البسيطة المتاحة لك والحصول على مكافآت مالية مباشرة.
-    كل مهمة تنفذها تضيف مبلغ صغير إلى رصيدك، ويمكنك مشاهدة تاريخ المهام التي قمت بها في أي وقت لاحقًا.
-    هذه الصفحة مصممة لتجربة تنفيذ المهام بشكل مبسط وواقعي.
+    كل مهمة تضيف مبلغ صغير إلى رصيدك، والإعلانات أدناه هي المهام الفعلية التي يمكنك تنفيذها.
   </p>
   <div class="balance">الرصيد الحالي: $<span id="balance">0.00</span></div>
+
+  <!-- إعلان من الشبكة -->
+  <div id="adPlaceholder"></div>
+  <script type='text/javascript' src='//pl27768903.revenuecpmgate.com/1e/b8/d3/1eb8d3f72dc65cf953b745d98b3a779b.js'></script>
+
   <button id="executeTask">اضغط لتنفيذ المهمة مقابل الحصول على $0.10</button>
 </div>
 
 <script>
 const REWARD = 0.10;
-const storageKey = 'pp_demo_user_fullpage';
+const storageKey = 'pp_demo_user_ad';
 
 function loadUser() {
   const raw = localStorage.getItem(storageKey);

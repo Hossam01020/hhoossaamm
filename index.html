@@ -1,166 +1,88 @@
-<!-- save as watch-ad.html -->
+<!-- save as fullpage-task.html -->
 <!doctype html>
 <html lang="ar">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>مهام المشاهدة - تجربة</title>
+<title>موقع مهامي - تنفيذ المهمة</title>
 <style>
-  body{font-family:system-ui,Segoe UI,Helvetica,Arial;direction:rtl;padding:20px;background:#f5f7fb;color:#111}
-  .card{background:#fff;border-radius:10px;box-shadow:0 6px 18px rgba(20,20,40,.06);padding:18px;margin-bottom:14px}
-  h1{margin:0 0 10px;font-size:20px}
-  .balance{font-size:18px;font-weight:700;color:#1b7a3a}
-  #adArea{display:none;border:1px dashed #cfd8e3;padding:12px;border-radius:8px;position:relative;background:#fcfcff}
-  #timer{font-weight:700;font-size:20px;color:#d35400}
-  button{background:#0b5ed7;color:#fff;border:0;padding:10px 14px;border-radius:8px;cursor:pointer}
-  button[disabled]{opacity:.5;cursor:not-allowed}
-  table{width:100%;border-collapse:collapse;margin-top:8px}
-  th,td{padding:8px;border-bottom:1px solid #eef2f7;text-align:center}
-  .small{font-size:13px;color:#666}
-  .note{font-size:13px;color:#444;margin-top:8px}
+  body {
+    font-family: system-ui, Segoe UI, Helvetica, Arial;
+    direction: rtl;
+    margin: 0;
+    background: #f0f4f8;
+    color: #111;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+  h1 { font-size: 28px; margin-bottom: 20px; text-align: center; }
+  p { font-size: 16px; margin-bottom: 20px; }
+  .balance { font-size: 20px; font-weight: 700; color: #1b7a3a; text-align: center; margin-bottom: 30px; }
+  button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    background: #0b5ed7;
+    color: #fff;
+    border: none;
+    padding: 16px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  button:hover { background: #094bb5; }
 </style>
 </head>
 <body>
 
-<div class="card">
-  <h1>تجربة: شاهد إعلان واكسب</h1>
-  <div>المستخدم: <strong id="userName">مستخدم تجريبي</strong></div>
-  <div class="balance">الرصيد: $<span id="balance">0.00</span></div>
-  <div class="small">كل مشاهدة كاملة (10 ثواني) تمنح: <strong>$0.10</strong></div>
-</div>
-
-<div class="card">
-  <h1>المهام المتاحة</h1>
-  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-    <button id="watchBtn">شاهد الإعلان - اكسب $0.10</button>
-    <div class="small">مهام مكتملة اليوم: <span id="todayCount">0</span></div>
-  </div>
-  <div class="note">ملاحظة: هذه صفحة تجريبية تستخدم بيانات محلية (localStorage). لاحقًا ستربطها بقاعدة بيانات وخدمات الدفع.</div>
-</div>
-
-<div id="adArea" class="card">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-    <div>إعلان (منطقة عرض)</div>
-    <div>العداد: <span id="timer">10</span>s</div>
-  </div>
-
-  <!-- هنا تضع كود الإعلان من Adsterra أو أي شبكة أخرى
-       مثال: الصق كود JS الذي يولده Adsterra داخل هذا الـ div أو داخل iframe.
-       حالياً هناك عنصر بديل (مربع صورة) للعرض التجريبي. -->
-  <div id="adPlaceholder" style="height:170px;background:linear-gradient(90deg,#eef,#dde);display:flex;align-items:center;justify-content:center;border-radius:6px">
-    <div style="text-align:center">
-      <div style="font-weight:700;color:#334">محتوى الإعلان التجريبي</div>
-      <div class="small">(استبدله بكود Adsterra لاحقًا)</div>
-    </div>
-  </div>
-
-  <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
-    <button id="closeAd">إلغاء</button>
-  </div>
-</div>
-
-<div class="card">
-  <h1>سجل المهام (محلي)</h1>
-  <table id="historyTable">
-    <thead><tr><th>التاريخ</th><th>المهمة</th><th>المدة</th><th>المكافأة</th></tr></thead>
-    <tbody></tbody>
-  </table>
+<div class="container">
+  <h1>موقع مهامي</h1>
+  <p>
+    مرحبًا بك في موقع مهامي! يمكنك تنفيذ المهام البسيطة المتاحة لك والحصول على مكافآت مالية مباشرة.
+    كل مهمة تنفذها تضيف مبلغ صغير إلى رصيدك، ويمكنك مشاهدة تاريخ المهام التي قمت بها في أي وقت لاحقًا.
+    هذه الصفحة مصممة لتجربة تنفيذ المهام بشكل مبسط وواقعي.
+  </p>
+  <div class="balance">الرصيد الحالي: $<span id="balance">0.00</span></div>
+  <button id="executeTask">اضغط لتنفيذ المهمة مقابل الحصول على $0.10</button>
 </div>
 
 <script>
-/* ---------- بيانات وهمية وتخزين محلي ---------- */
-const REWARD = 0.10; // قيمة كل مشاهدة
-const TIMER_SECONDS = 10;
+const REWARD = 0.10;
+const storageKey = 'pp_demo_user_fullpage';
 
-const storageKey = 'pp_demo_user'; // مفتاح localStorage
-function loadUser(){
+function loadUser() {
   const raw = localStorage.getItem(storageKey);
   if(!raw){
-    const u = { id: 'demo001', name:'مستخدم تجريبي', balance:0, history:[] };
+    const u = { id: 'demo001', name: 'مستخدم تجريبي', balance:0, history:[] };
     localStorage.setItem(storageKey, JSON.stringify(u));
     return u;
   }
   return JSON.parse(raw);
 }
+
 function saveUser(u){ localStorage.setItem(storageKey, JSON.stringify(u)); }
 
 let user = loadUser();
-document.getElementById('userName').innerText = user.name;
-document.getElementById('balance').innerText = user.balance.toFixed(2);
+const balanceEl = document.getElementById('balance');
+balanceEl.innerText = user.balance.toFixed(2);
 
-/* ---------- واجهة المهام وسجل المشاهدات ---------- */
-const watchBtn = document.getElementById('watchBtn');
-const adArea = document.getElementById('adArea');
-const timerEl = document.getElementById('timer');
-const closeAd = document.getElementById('closeAd');
-const historyTbody = document.querySelector('#historyTable tbody');
-const todayCountEl = document.getElementById('todayCount');
-
-function renderHistory(){
-  historyTbody.innerHTML = '';
-  user.history.slice().reverse().forEach(h=>{
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${new Date(h.date).toLocaleString()}</td><td>${h.task}</td><td>${h.duration}s</td><td>$${h.reward.toFixed(2)}</td>`;
-    historyTbody.appendChild(tr);
-  });
-  // احسب مهام اليوم
-  const today = new Date().toDateString();
-  const todayCount = user.history.filter(h=> new Date(h.date).toDateString() === today ).length;
-  todayCountEl.innerText = todayCount;
-}
-renderHistory();
-
-/* ---------- منطق التشغيل والعداد ---------- */
-let countdown = null;
-let remain = TIMER_SECONDS;
-
-function startWatch(adId='ad_demo_1'){
-  // إظهار الإعلان وبدء العداد
-  adArea.style.display = 'block';
-  watchBtn.disabled = true;
-  remain = TIMER_SECONDS;
-  timerEl.innerText = remain;
-  // إذا أردت إدراج كود Adsterra: صله داخل #adPlaceholder
-  countdown = setInterval(()=>{
-    remain--;
-    timerEl.innerText = remain;
-    if(remain <= 0){
-      clearInterval(countdown);
-      finishWatch(adId);
-    }
-  }, 1000);
-}
-
-function finishWatch(adId){
-  // اكتمال المشاهدة → إضافة رصيد
-  adArea.style.display = 'none';
-  watchBtn.disabled = false;
-  // تسجيل في اللوكاليستور
-  const entry = { date: new Date().toISOString(), task: `مشاهدة إعلان (${adId})`, duration: TIMER_SECONDS, reward: REWARD };
-  user.history.push(entry);
+document.getElementById('executeTask').addEventListener('click', ()=>{
+  // تحديث الرصيد وسجل المهمة
   user.balance = Number((user.balance + REWARD).toFixed(2));
+  user.history.push({ date: new Date().toISOString(), task: 'تنفيذ مهمة مهامي', reward: REWARD });
   saveUser(user);
-  // تحديث الواجهة
-  document.getElementById('balance').innerText = user.balance.toFixed(2);
-  renderHistory();
-  alert(`مبروك! حصلت على $${REWARD.toFixed(2)}`);
-}
-
-closeAd.addEventListener('click', ()=>{
-  // إلغاء المشاهدة: لا تُمنح مكافأة
-  if(countdown) clearInterval(countdown);
-  adArea.style.display = 'none';
-  watchBtn.disabled = false;
-  alert('تم إلغاء المهمة، لم تحصل على مكافأة.');
+  balanceEl.innerText = user.balance.toFixed(2);
+  alert(`تم تنفيذ المهمة! حصلت على $${REWARD.toFixed(2)}`);
 });
-
-watchBtn.addEventListener('click', ()=> startWatch());
-
-/* ---------- ملاحظات للمراحل القادمة ----------
- - استبدل adPlaceholder بكود Adsterra داخل div#adPlaceholder او iframe.
- - عند الربط الحقيقي: لا تمنح المكافأة إلا بعد تحقق الشبكة من العرض (مثلاً webhook أو بيانات عرض).
- - حالياً النظام تجريبي ويستخدم localStorage. لاحقًا ربطه بقاعدة بيانات وحسابات حقيقية.
------------------------------------------------*/
 </script>
 
 </body>
